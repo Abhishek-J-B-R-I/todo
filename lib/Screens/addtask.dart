@@ -27,7 +27,6 @@ class _addtaskState extends State<addtask> {
           FilledButton(
             onPressed: () {},
             child: Text("Add"),
-
             style: ButtonStyle(
                 backgroundColor:
                     MaterialStatePropertyAll(Colors.lightBlueAccent)),
@@ -36,7 +35,7 @@ class _addtaskState extends State<addtask> {
       ),
       height: 300,
       decoration: BoxDecoration(
-          color: Color(0x41757575),
+          color: Color(0xECECECEC),
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20), topRight: Radius.circular(20))),
     );
