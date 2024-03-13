@@ -9,9 +9,33 @@ class todotile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text("create TODO app"),trailing: Checkbox(value: false, onChanged: (value) {
+      title: Text("create TODO app"),
+      trailing: ischeckbox(),
+    );
+  }
+}
 
-    },),
+class ischeckbox extends StatefulWidget {
+
+
+  @override
+  State<ischeckbox> createState() => _ischeckboxState();
+}
+
+class _ischeckboxState extends State<ischeckbox> {
+  bool ischecked=false;
+  @override
+  Widget build(BuildContext context) {
+    return Checkbox(
+      value: ischecked,
+      onChanged: (newValue) {
+        setState(() {
+          if(newValue != null){
+            ischecked=newValue;
+          }
+        });
+
+      },
     );
   }
 }
