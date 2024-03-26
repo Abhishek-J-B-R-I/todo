@@ -1,6 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:todo/Screens/todolist.dart';
 
+
+
+
+
+
+class todotile extends StatelessWidget {
+final String title1;
+final bool ischecked1;
+todotile({required this.title1, required this.ischecked1});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(title1,style: TextStyle(decoration: ischecked1?TextDecoration.lineThrough:null),),
+      trailing: Checkbox(value: ischecked1,onChanged: (bool? ischecked1){},),
+    );
+  }
+}
+
+//this commented code for explaination or learning only where we learn how one statful widget workd with stateless widget here i change checkbox which is stateless widget with the helpt of statefull widget
+/*
 class todotile extends StatefulWidget {
   const todotile({
     super.key,
@@ -51,3 +72,4 @@ class ischeckbox extends StatelessWidget {
     );
   }
 }
+*/
