@@ -19,11 +19,13 @@ List<Task>task=[
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        todotile(title1: task[0].tasktitle, ischecked1: task[0].ischecked),
-        todotile(title1: task[1].tasktitle, ischecked1: task[1].ischecked)
-      ],
-    );
+    return ListView.builder(itemBuilder: (context,index){
+      return todotile(title1: task[index].tasktitle,ischecked1: task[index].ischecked, callbackfuncheckbox: (bool? newvalue){
+        setState(() {
+          task[index].checkedfunction();
+
+        });
+         },);
+    },itemCount: task.length,);
   }
 }

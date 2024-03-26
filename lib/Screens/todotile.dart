@@ -9,13 +9,14 @@ import 'package:todo/Screens/todolist.dart';
 class todotile extends StatelessWidget {
 final String title1;
 final bool ischecked1;
-todotile({required this.title1, required this.ischecked1});
+final void Function(bool?) callbackfuncheckbox;
+todotile({required this.title1, required this.ischecked1,required this.callbackfuncheckbox});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(title1,style: TextStyle(decoration: ischecked1?TextDecoration.lineThrough:null),),
-      trailing: Checkbox(value: ischecked1,onChanged: (bool? ischecked1){},),
+      trailing: Checkbox(value: ischecked1,onChanged: callbackfuncheckbox,),
     );
   }
 }
