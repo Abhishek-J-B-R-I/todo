@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:todo/Screens/todolist.dart';
 import 'package:todo/Screens/addtask.dart';
+import 'package:todo/module/task.dart';
 
 class TaskScreen extends StatefulWidget {
   const TaskScreen({super.key});
@@ -11,6 +12,10 @@ class TaskScreen extends StatefulWidget {
 }
 
 class _TaskScreenState extends State<TaskScreen> {
+  List<Task> tasks = [
+    Task(tasktitle: 'flutter work'),
+    Task(tasktitle: 'college work'),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +30,16 @@ class _TaskScreenState extends State<TaskScreen> {
                 child: Container(
                     padding: EdgeInsets.only(
                         bottom: MediaQuery.of(context).viewInsets.bottom),
-                    child: addtask()),
+                    child: addtask(
+                      addtaskcallback: (newtasktitle) {
+                        print(newtasktitle);
+                        setState(() {
+                          tasks.add(Task(tasktitle: newtasktitle));
+                        });
+                        Navigator.pop(context);
+
+                      },
+                    )),
               ),
             );
           },
@@ -79,7 +93,7 @@ class _TaskScreenState extends State<TaskScreen> {
                     topRight: Radius.circular(20),
                   ),
                 ),
-                child: todolist(),
+                child: todolist(tasks: tasks),
               ),
             ),
           ],

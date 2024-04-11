@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 
-class addtask extends StatefulWidget {
-  const addtask({super.key});
+class addtask extends StatelessWidget {
+  final Function addtaskcallback;
+  addtask({required this.addtaskcallback});
 
-  @override
-  State<addtask> createState() => _addtaskState();
-}
-
-class _addtaskState extends State<addtask> {
   @override
   Widget build(BuildContext context) {
+    String? newtexttitle;
     return Container(
       padding: EdgeInsets.all(20),
       child: Column(
@@ -23,9 +20,16 @@ class _addtaskState extends State<addtask> {
           TextField(
             autofocus: true,
             textAlign: TextAlign.center,
+            onChanged: (value) {
+              print(value);
+                newtexttitle=value;
+            },
           ),
           FilledButton(
-            onPressed: () {},
+            onPressed: () {
+              print(newtexttitle);
+              addtaskcallback(newtexttitle);
+            },
             child: Text("Add"),
             style: ButtonStyle(
                 backgroundColor:

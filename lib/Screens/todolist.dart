@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:todo/Screens/todotile.dart';
 import 'package:todo/module/task.dart';
 class todolist extends StatefulWidget {
-  const todolist({
-    super.key,
+  final List<Task> tasks;
+
+   todolist({
+    required this.tasks
   });
 
   @override
@@ -11,21 +13,17 @@ class todolist extends StatefulWidget {
 }
 
 class _todolistState extends State<todolist> {
-List<Task>task=[
-  Task(tasktitle: 'flutter work'),
-  Task(tasktitle: 'college work'),
 
-];
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(itemBuilder: (context,index){
-      return todotile(title1: task[index].tasktitle,ischecked1: task[index].ischecked, callbackfuncheckbox: (bool? newvalue){
+      return todotile(title1: widget.tasks[index].tasktitle,ischecked1: widget.tasks[index].ischecked, callbackfuncheckbox: (bool? newvalue){
         setState(() {
-          task[index].checkedfunction();
+          widget.tasks[index].checkedfunction();
 
         });
          },);
-    },itemCount: task.length,);
+    },itemCount: widget.tasks.length,);
   }
 }
